@@ -1,0 +1,55 @@
+### SCRIPT 2 - DESCRIPTIVE STATISTICS ###
+
+#Cleaning the workspace
+rm(list = ls())
+
+#Uploading previous file
+source("Assignment 6 - Data.R")
+
+
+#Range, mean and SD of age by gender
+summary(df)
+
+summary_by_gender = df %>%
+  group_by(gender) %>%
+  summarise(
+    avg_age = mean(age, na.rm = TRUE),
+    range_age = range(age, na.rm = TRUE),
+    sd_age = sd(age, na.rm = TRUE)
+  )
+
+print(summary_by_gender)
+
+#Scatter plots
+#R based
+plot(df$stress, df$satisfaction,
+     main = "Correalation Between Stress and Satisfaction (Base R)", 
+     xlab = "Stress", 
+     ylab = "Satisfaction",
+     pch = 16,   
+     col = "skyblue1")
+abline(lm(satisfaction ~ stress, data = df), col = "coral", lwd = 2)
+
+
+#ggplot
+ggplot(df, aes(x = stress, y = satisfaction)) +
+  geom_point(color = "deepskyblue", size = 2) +  
+  geom_smooth(method = "lm", color = "firebrick1", se = TRUE) + 
+  labs(title = "Correalation Between Stress and Satisfaction (ggplot2)",
+       x = "Stress",
+       y = "Satisfaction") +
+  theme_minimal() 
+
+#ggscatter
+ggscatter(df, 
+          x = "stress", 
+          y = "satisfaction",
+          add = "reg.line",         
+          conf.int = TRUE,       
+          cor.coef = TRUE,       
+          cor.method = "pearson",   
+          title = "Correalation Between Stress and Satisfaction (ggpubr)",
+          xlab = "Stress",
+          ylab = "Satisfaction",
+          color = "mediumslateblue", 
+          size = 2)
