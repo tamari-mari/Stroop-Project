@@ -2,6 +2,9 @@
 # Week 7
 # assignment by Tamari Geron, id 314833195
 
+#71 lines of code
+#this code handles and organizes the raw data from the stroop task
+#written by Tamari Geron, December 24th 2024
 
 ### SCRIPT 1 - RAW DATA ###
 
@@ -66,5 +69,3 @@ contrasts(df$congruency)
 
 #Save file
 save(df, file = ".//raw_data.rdata")
-
-

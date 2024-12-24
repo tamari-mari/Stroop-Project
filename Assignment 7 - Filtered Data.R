@@ -1,3 +1,7 @@
+#54 lines of code
+#this code filters the raw data from the stroop task, keeping only what's relevant to our analysis
+#written by Tamari Geron, December 24th 2024
+
 ### SCRIPT 2 - FILTERED DATA ###
 
 #Cleaning the workspace
@@ -48,5 +52,3 @@ summary_stats
 
 #Save file
 save(df, file = ".//filtered_data.rdata")
-
-
